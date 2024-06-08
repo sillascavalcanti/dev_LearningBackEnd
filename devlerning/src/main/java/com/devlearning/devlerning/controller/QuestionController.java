@@ -11,7 +11,7 @@ import com.devlearning.devlerning.service.QuestionService;
 
 
 @RestController
-@RequestMapping("test")
+@RequestMapping("question")
 public class QuestionController{
     private static AtomicInteger _count = new AtomicInteger();
     // private static List<String> answer = List.of("print()", "input()", "scan()", "println()");
@@ -29,7 +29,7 @@ public class QuestionController{
         return _count.incrementAndGet();
     }
 
-    @GetMapping("question/{id}")
+    @GetMapping("{id}")
     public ResponseEntity<QuestionDTO> getQuestion(@PathVariable long id){
         return questionService.getQuestion(id);
     }

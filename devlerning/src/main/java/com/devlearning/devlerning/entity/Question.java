@@ -21,4 +21,5 @@ public class Question {
     private String answer3;
     private String answer4;
     private String solution;
+    private String type;
 }

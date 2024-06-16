@@ -17,9 +17,9 @@ public class QuestionService {
         this.questionRepository = questionRepository;
     }
 
-    public ResponseEntity<QuestionDTO> getQuestion(long id){
+    public ResponseEntity<QuestionDTO> getQuestion(long id, String type){
         try {
-            Question question = questionRepository.findById(id).get();
+            Question question = questionRepository.findByIdAndType(id, type).get();
             QuestionDTO questionDTO = new QuestionDTO(question.getContent(),
             List.of(question.getAnswer1(),
                     question.getAnswer2(),

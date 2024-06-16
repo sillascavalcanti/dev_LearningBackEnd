@@ -2,6 +2,7 @@ package com.devlearning.devlerning.controller;
 
 import java.util.concurrent.atomic.AtomicInteger;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import com.devlearning.devlerning.service.QuestionService;
 
 @RestController
 @RequestMapping("question")
+@CrossOrigin
 public class QuestionController{
     private static AtomicInteger _count = new AtomicInteger();
     // private static List<String> answer = List.of("print()", "input()", "scan()", "println()");
@@ -29,9 +31,9 @@ public class QuestionController{
         return _count.incrementAndGet();
     }
 
-    @GetMapping("{id}")
-    public ResponseEntity<QuestionDTO> getQuestion(@PathVariable long id){
-        return questionService.getQuestion(id);
+    @GetMapping("{type}/{id}")
+    public ResponseEntity<QuestionDTO> getQuestion(@PathVariable long id, @PathVariable String type){
+        return questionService.getQuestion(id, type);
     }
     
 
